@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="form_bg">
+            <form #regForm='ngForm' (ngSubmit)="register(regForm)">
+                <h2 class="text-center">Registration page</h2>
+                <br />
+                <div class="form-group">
+                    <label for="name">First Name</label>
+                    <input type="text" class="form-control" placeholder="First Name" name="firstname" id="name" ngModel
+                        required #name="ngModel" minlength="8" pattern="^[A-Za-z]$">
+                    {{name.errors|json}}
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+
+                        <span *ngIf="name.errors?.required">
+                            Name is required.
+                        </span>
+                        <div *ngIf="name.errors?.minlength">
+                            Name must be at least 8 characters long.
+                        </div> 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Last Name" name="lastname" ngModel>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="Email" name="email" ngModel>
+
+                </div>
+                <div class="form-group">
+                </div>
+                <br />
+                <div class="align-center">
+                    <button type="submit" class="btn btn-default" id="register" [disabled]="!regForm.valid">
+                        Register</button>
+                </div>
+                <div *ngIf="formData" class="text-success">
+                    {{formData | json}}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

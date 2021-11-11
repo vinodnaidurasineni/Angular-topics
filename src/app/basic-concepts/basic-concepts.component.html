@@ -1,0 +1,26 @@
+<h1 class="text-uppercase bg-primary">{{title + " i am done" }}</h1>
+<h2 class="text-primary">{{number+10}}</h2>
+<input type="text" [(ngModel)]="myname">
+<div class="lead">my name is {{myname | lowercase}} {{"2021-10-28" | date:"short"}}</div>
+<button class="btn btn-primary btn-block" (click)="clicked()">{{buttonClicked ?"u clicked button":"u unclicked"}}</button>
+<button   [disabled]="buttonClicked">{{buttonClicked ?"i am disabled":"i am open to click"}}</button>
+<div [ngClass]="buttonClicked?'bg-primary':'bg-success'">i am being checked with bgcolor</div>
+<div [style.background-color]="buttonClicked?'blue':'green'">i am being checked with bgcolor with style binding</div>
+<div [innerHTML]="innerContent"></div>
+
+{{innerContent}}
+<div [ngStyle]="styles">
+  i am with ngstyle
+</div>
+
+<div *ngIf="buttonClicked">
+button clicked at 5 line
+</div>
+<input #phone placeholder="phone number" />
+
+<!-- lots of other elements -->
+
+<!-- phone refers to the input element; pass its `value` to an event handler -->
+<button (click)="callPhone(phone.value)">Call</button>
+<img [src]="itemImageUrl" class="rounded">
+<img src="../assets/OIP.jpg" class="rounded-circle">
