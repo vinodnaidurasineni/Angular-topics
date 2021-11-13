@@ -6,9 +6,13 @@
                 <br />
                 <div class="form-group">
                     <label for="name">First Name</label>
-                    <input type="text" class="form-control" placeholder="First Name" name="firstname" id="name" ngModel
-                        required #name="ngModel" minlength="8" pattern="^[A-Za-z]$">
-                    {{name.errors|json}}
+                    <input type="text" class="form-control" placeholder="First Name" name="firstname" id="name" ngModel   
+                        required #name="ngModel" minlength="8" maxlength="10" pattern="^[A-Za-z]*$">
+                    {{name.errors | json}}
+                    <!-- <span *ngIf="name.untouched"> Name is required.</span> -->
+                    <!-- <div *ngIf="name.errors?.pattern">
+                        onyly alphabet allowed
+                    </div>  -->
                     <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
 
                         <span *ngIf="name.errors?.required">
@@ -16,6 +20,9 @@
                         </span>
                         <div *ngIf="name.errors?.minlength">
                             Name must be at least 8 characters long.
+                        </div> 
+                        <div *ngIf="name.errors?.pattern">
+                            onyly alphabet allowed
                         </div> 
                     </div>
                 </div>

@@ -8,7 +8,9 @@ import { TemplateformsComponent } from './templateforms/templateforms.component'
 import { ReactiveformsComponent } from './reactiveforms/reactiveforms.component';
 import { BasicConceptsComponent } from './basic-concepts/basic-concepts.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { ServiceCompComponent } from './service-comp/service-comp.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {AuthInterceptor } from './Http-interceptor/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     TestbindingsComponent,
     TemplateformsComponent,
     ReactiveformsComponent,
-    BasicConceptsComponent
+    BasicConceptsComponent,
+    ServiceCompComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+     { provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

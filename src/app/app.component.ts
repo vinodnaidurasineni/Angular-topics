@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
-  constructor() {
+  constructor(private router:Router, private route:ActivatedRoute) {
     console.log("constructor");
+  }
+  goto() {
+    this.router.navigate(['items','123']);
   }
  
 }
