@@ -9,6 +9,8 @@ import { ReactiveformsComponent } from './reactiveforms/reactiveforms.component'
 import { BasicConceptsComponent } from './basic-concepts/basic-concepts.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
     TestbindingsComponent,
     TemplateformsComponent,
     ReactiveformsComponent,
-    BasicConceptsComponent
+    BasicConceptsComponent,
+    ParentComponent,
+    ChildComponent
   ],
   imports: [
     BrowserModule,
