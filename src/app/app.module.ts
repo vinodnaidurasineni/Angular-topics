@@ -8,9 +8,11 @@ import { TemplateformsComponent } from './templateforms/templateforms.component'
 import { ReactiveformsComponent } from './reactiveforms/reactiveforms.component';
 import { BasicConceptsComponent } from './basic-concepts/basic-concepts.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
+import { ServiceCompComponent } from './service-comp/service-comp.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {AuthInterceptor } from './Http-interceptor/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ChildComponent } from './child/child.component';
     ReactiveformsComponent,
     BasicConceptsComponent,
     ParentComponent,
-    ChildComponent
+    ChildComponent,
+    ServiceCompComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,9 @@ import { ChildComponent } from './child/child.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+     { provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

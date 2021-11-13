@@ -1,1 +1,10 @@
+<nav>
+  <ul>
+    <li><a routerLink="/template" routerLinkActive="active">Template Component</a></li>
+    <li><a routerLink="/reactive" routerLinkActive="active">ReactiveComponent</a></li>
+  </ul>
+</nav>
+<a [routerLink]="['/hero', '12']">nav
+</a>
+<button (click)="goto()">nav button</button>
 <router-outlet></router-outlet>

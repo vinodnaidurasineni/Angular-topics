@@ -9,7 +9,7 @@ import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms'
 export class ReactiveformsComponent implements OnInit {
 
   profileForm = this.fb.group({
-    firstName: ['', [Validators.required,Validators.min(4)]],
+    firstName: ['', [Validators.required,Validators.min(4), Validators.pattern("^[0-9]*$")]],
     lastName: [''],
     address: this.fb.group({
       street: new FormControl('',[Validators.max(10)]),
